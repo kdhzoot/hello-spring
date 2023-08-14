@@ -27,10 +27,12 @@ public class MemberService {
      * @return no way
      */
     public Long join(Member member) throws IllegalStateException {
-        validateDuplicateMember(member);
+        Long start = System.currentTimeMillis();
 
+        validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
+
     }
 
     private void validateDuplicateMember(Member member) throws IllegalStateException {
